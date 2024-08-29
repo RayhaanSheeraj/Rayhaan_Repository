@@ -3,7 +3,7 @@ description: "Class of 2025"
 owner_name: Rayhaan Sheeraj
 github_username: RayhaanSheeraj
 github_repo: "Rayhaan_Repository" 
-baseurl: "/student_2025"
+baseurl: "/Rayhaan_Repository"
 future: true
 remote_theme: jekyll/minima
 minima:
