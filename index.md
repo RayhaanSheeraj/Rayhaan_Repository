@@ -183,9 +183,42 @@ Hello, my name is Rayhaan Sheeraj, I am 15 and in 10th grade. I am taking the co
   document.addEventListener("DOMContentLoaded", () => {
     // adjust sprite size for high pixel density devices
     const scale = window.devicePixelRatio;
-    const sprite = document.querySelector(".sprite");
-    sprite.style.transform = `scale(${3* scale})`;
+    const sprite = document.querySelector(".sprite");    sprite.style.transform = `scale(${0.2* scale})`;
     mario.startResting();
   });
 
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+<div style="border: 1px solid white; padding: 10px;"> 
+<p>Click the button below to login:</p> 
+<button style="background-color: #6699ff !important; border-radius: 10px;">Login</button>
+ <br> 
+ <br>
+  </div> 
+ <div style="border: 1px solid white; padding: 10px;"> 
+ <p>Click the button below to learn more about me:</p>
+ <a href="about/" style="text-decoration: none;">
+   
+  <button style="background-color: #6699ff !important; border-radius: 10px;">About Me</button>
+   </a>
+    <br> 
+    <p>Click the button below to see the top 10 most popular video games:</p>
+    <a href="videogame/" style="text-decoration: none;"> 
+     <button style="background-color: #6699ff !important; border-radius: 10px;">Top 10 Most Popular Video Games</button> 
+     </a> 
+     </div>
+
+
