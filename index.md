@@ -216,9 +216,9 @@ Hello, my name is Rayhaan Sheeraj, I am 15 and in 10th grade. I am taking the co
   <button style="background-color: #6699ff !important; border-radius: 10px;">About Me</button>
    </a>
     <br> 
-    <p>Click the button below to see the top 10 most popular video games:</p>
-    <a href="videogame/" style="text-decoration: none;"> 
-     <button style="background-color: #6699ff !important; border-radius: 10px;">Top 10 Most Popular Video Games</button> 
+    <p>Click the button below to learn about the different coding languagues</p>
+    <a href="https://cyberlord09.github.io/grouprepo_2025/" style="text-decoration: none;"> 
+     <button style="background-color: #6699ff !important; border-radius: 10px;">Coding Languagues</button> 
      </a> 
      </div>
 
