@@ -210,10 +210,10 @@ Hello, my name is Rayhaan Sheeraj, I am 15 and in 10th grade. I am taking the co
  <br>
   </div> 
  <div style="border: 1px solid white; padding: 10px;"> 
- <p>Click the button below to learn more about me:</p>
+ <p>Click the button to learn about me:</p>
  <a href="about/" style="text-decoration: none;">
    
-  <button style="background-color: #6699ff !important; border-radius: 10px;">About Me</button>
+  <button style="background-color: #6699ff !important; border-radius: 10px;">About</button>
    </a>
     <br> 
     <p>Click the button below to learn about the different coding languagues</p>
