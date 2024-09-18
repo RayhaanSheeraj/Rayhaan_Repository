@@ -14,6 +14,9 @@ comments: true
      <td> 
     <a href="{{site.baseurl}}/my_calculator">Calculator</a>
      </td>
+     <td> 
+    <a href="{{site.baseurl}}/tic-tac-toe/">Tic-Tac-Toe</a>
+     </td>
      </tbody>
 </table>
      
