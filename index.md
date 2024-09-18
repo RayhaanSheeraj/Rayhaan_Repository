@@ -6,7 +6,17 @@ image: /images/mario_animation.png
 hide: true
 comments: true
 ---
-
+<table>
+<tbody>
+    <td> 
+    <a href="{{site.baseurl}}/cookieclicker">Cookie Clicker</a>
+     </td>
+     <td> 
+    <a href="{{site.baseurl}}/my_calculator">Calculator</a>
+     </td>
+     </tbody>
+</table>
+     
 Hello, my name is Rayhaan Sheeraj, I am 15 and in 10th grade. I am taking the course AP CSP. Here you can see my journey, my projects, and my progress throughout this class.
 
 <!-- Liquid:  statements -->
