@@ -218,7 +218,7 @@ Hello, my name is Rayhaan Sheeraj, I am 15 and in 10th grade. I am taking the co
 
 <div style="border: 1px solid white; padding: 10px;"> 
 <p>Click the button below to login:</p> 
-<button style="background-color: #6699ff !important; border-radius: 10px;">Login</button>
+<button style="background-color: #6699ff !important; border-radius: 10px; color: white">Login</button>
  <br> 
  <br>
   </div> 
@@ -226,12 +226,12 @@ Hello, my name is Rayhaan Sheeraj, I am 15 and in 10th grade. I am taking the co
  <p>Click the button to learn about me:</p>
  <a href="about/" style="text-decoration: none;">
    
-  <button style="background-color: #6699ff !important; border-radius: 10px;">About</button>
+  <button style="background-color: #6699ff !important; border-radius: 10px; color: white ">About</button>
    </a>
     <br> 
     <p>Click the button below to learn about the different coding languagues</p>
     <a href="https://cyberlord09.github.io/grouprepo_2025/" style="text-decoration: none;"> 
-     <button style="background-color: #6699ff !important; border-radius: 10px;">Coding Languagues</button> 
+     <button style="background-color: #6699ff !important; border-radius: 10px;  color: white ">Coding Languagues</button> 
      </a> 
      </div>
 
