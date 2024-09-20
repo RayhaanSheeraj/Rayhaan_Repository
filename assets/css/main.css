@@ -1,0 +1,35 @@
+/* Global styles for light mode */
+body.light-mode {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+/* Global styles for dark mode */
+body.dark-mode {
+    background-color: #121212;
+    color: #fff;
+}
+
+/* Ensure all text turns white in dark mode */
+body.dark-mode p,
+body.dark-mode h1, h2, h3, h4, h5, h6,
+body.dark-mode button,
+body.dark-mode div,
+body.dark-mode span,
+body.dark-mode a,
+body.dark-mode li,
+body.dark-mode dt, dd,
+body.dark-mode th, td,
+body.dark-mode input, textarea {
+    color: #fff; /* Make all text white */
+}
+
+/* Button specific styling in dark mode */
+body.dark-mode .button {
+    background-color: #444;
+    color: white;
+}
+
+body.dark-mode .button:hover {
+    background-color: #333;
+}

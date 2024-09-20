@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: page
 title: Student Home 
 description: Home Page
 image: /images/mario_animation.png
@@ -15,224 +15,82 @@ comments: true
     <a href="{{site.baseurl}}/my_calculator">Calculator</a>
      </td>
      <td> 
-    <a href="{{site.baseurl}}/tic-tac-toe/">Tic-Tac-Toe</a>
+    <a href="{{site.baseurl}}/tic-tac-toe">Tic Tac Toe</a>
      </td>
      </tbody>
 </table>
      
 Hello, my name is Rayhaan Sheeraj, I am 15 and in 10th grade. I am taking the course AP CSP. Here you can see my journey, my projects, and my progress throughout this class.
 
-<!-- Liquid:  statements -->
 
-<!--- Concatenation of site URL to frontmatter image  --->
 {% assign sprite_file = site.baseurl | append: page.image %}
-<!--- Has is a list variable containing mario metadata for sprite --->
+
 {% assign hash = site.data.mario_metadata %}  
-<!--- Size width/height of Sprit images --->
+
 {% assign pixels = 256 %}
 
-<!--- HTML for page contains <p> tag named "Mario" and class properties for a "sprite"  -->
+
 
 <p id="mario" class="sprite"></p>
   
-<!--- Embedded Cascading Style Sheet (CSS) rules, 
-        define how HTML elements look 
---->
+
 <style>
-
-  /*CSS style rules for the id and class of the sprite...
-  */
-  .sprite {
-    height: {{pixels}}px;
-    width: {{pixels}}px;
-    background-image: url('{{sprite_file}}');
-    background-repeat: no-repeat;
-  }
-
-  /*background position of sprite element
-  */
-  #mario {
-    background-position: calc({{animations[0].col}} * {{pixels}} * -1px) calc({{animations[0].row}} * {{pixels}}* -1px);
-  }
+    body.light-mode {
+        background-color: #f0f0f0;
+        color: #000;
+    }
+    body.dark-mode {
+        background-color: #121212;
+        color: #fff;
+    }
+    .button {
+        margin-top: 20px;
+        padding: 5px 10px;
+        font-size: 14px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #6699ff;
+        color: white;
+    }
+    .button:hover {
+        background-color: #5577cc;
+    }
 </style>
 
-<!--- Embedded executable code--->
-<script>
-  ////////// convert YML hash to javascript key:value objects /////////
-
-  var mario_metadata = {}; //key, value object
-  {% for key in hash %}  
-  
-  var key = "{{key | first}}"  //key
-  var values = {} //values object
-  values["row"] = {{key.row}}
-  values["col"] = {{key.col}}
-  values["frames"] = {{key.frames}}
-  mario_metadata[key] = values; //key with values added
-
-  {% endfor %}
-
-  ////////// game object for player /////////
-
-  class Mario {
-    constructor(meta_data) {
-      this.tID = null;  //capture setInterval() task ID
-      this.positionX = 0;  // current position of sprite in X direction
-      this.currentSpeed = 0;
-      this.marioElement = document.getElementById("mario"); //HTML element of sprite
-      this.pixels = {{pixels}}; //pixel offset of images in the sprite, set by liquid constant
-      this.interval = 100; //animation time interval
-      this.obj = meta_data;
-      this.marioElement.style.position = "absolute";
-    }
-
-    animate(obj, speed) {
-      let frame = 0;
-      const row = obj.row * this.pixels;
-      this.currentSpeed = speed;
-
-      this.tID = setInterval(() => {
-        const col = (frame + obj.col) * this.pixels;
-        this.marioElement.style.backgroundPosition = `-${col}px -${row}px`;
-        this.marioElement.style.left = `${this.positionX}px`;
-
-        this.positionX += speed;
-        frame = (frame + 1) % obj.frames;
-
-        const viewportWidth = window.innerWidth;
-        if (this.positionX > viewportWidth - this.pixels) {
-          document.documentElement.scrollLeft = this.positionX - viewportWidth + this.pixels;
-        }
-      }, this.interval);
-    }
-
-    startWalking() {
-      this.stopAnimate();
-      this.animate(this.obj["Walk"], 3);
-    }
-
-    startRunning() {
-      this.stopAnimate();
-      this.animate(this.obj["Run1"], 6);
-    }
-
-    startPuffing() {
-      this.stopAnimate();
-      this.animate(this.obj["Puff"], 0);
-    }
-
-    startCheering() {
-      this.stopAnimate();
-      this.animate(this.obj["Cheer"], 0);
-    }
-
-    startFlipping() {
-      this.stopAnimate();
-      this.animate(this.obj["Flip"], 0);
-    }
-
-    startResting() {
-      this.stopAnimate();
-      this.animate(this.obj["Rest"], 0);
-    }
-
-    stopAnimate() {
-      clearInterval(this.tID);
-    }
-  }
-
-  const mario = new Mario(mario_metadata);
-
-  ////////// event control /////////
-
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      if (event.repeat) {
-        mario.startCheering();
-      } else {
-        if (mario.currentSpeed === 0) {
-          mario.startWalking();
-        } else if (mario.currentSpeed === 3) {
-          mario.startRunning();
-        }
-      }
-    } else if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      if (event.repeat) {
-        mario.stopAnimate();
-      } else {
-        mario.startPuffing();
-      }
-    }
-  });
-
-  //touch events that enable animations
-  window.addEventListener("touchstart", (event) => {
-    event.preventDefault(); // prevent default browser action
-    if (event.touches[0].clientX > window.innerWidth / 2) {
-      // move right
-      if (currentSpeed === 0) { // if at rest, go to walking
-        mario.startWalking();
-      } else if (currentSpeed === 3) { // if walking, go to running
-        mario.startRunning();
-      }
-    } else {
-      // move left
-      mario.startPuffing();
-    }
-  });
-
-  //stop animation on window blur
-  window.addEventListener("blur", () => {
-    mario.stopAnimate();
-  });
-
-  //start animation on window focus
-  window.addEventListener("focus", () => {
-     mario.startFlipping();
-  });
-
-  //start animation on page load or page refresh
-  document.addEventListener("DOMContentLoaded", () => {
-    // adjust sprite size for high pixel density devices
-    const scale = window.devicePixelRatio;
-    const sprite = document.querySelector(".sprite");    sprite.style.transform = `scale(${0.2* scale})`;
-    mario.startResting();
-  });
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
- 
+<div style="border: 1px solid white; padding: 10px;"> 
+  <p>Click the button below to login:</p> 
+  <button style="background-color: #6699ff !important; border-radius: 10px; color: white;">Login</button>
+  <br><br>
+</div> 
 
 <div style="border: 1px solid white; padding: 10px;"> 
-<p>Click the button below to login:</p> 
-<button style="background-color: #6699ff !important; border-radius: 10px; color: white">Login</button>
- <br> 
- <br>
-  </div> 
- <div style="border: 1px solid white; padding: 10px;"> 
- <p>Click the button to learn about me:</p>
- <a href="about/" style="text-decoration: none;">
-   
-  <button style="background-color: #6699ff !important; border-radius: 10px; color: white ">About</button>
-   </a>
-    <br> 
-    <p>Click the button below to learn about the different coding languagues</p>
-    <a href="https://cyberlord09.github.io/grouprepo_2025/" style="text-decoration: none;"> 
-     <button style="background-color: #6699ff !important; border-radius: 10px;  color: white ">Coding Languagues</button> 
-     </a> 
-     </div>
+  <p>Click the button to learn about me:</p>
+  <a href="about/" style="text-decoration: none;">
+    <button style="background-color: #6699ff !important; border-radius: 10px; color: white;">About</button>
+  </a>
+  <br>
+  <p>Click the button below to learn about the different coding languages:</p>
+  <a href="https://cyberlord09.github.io/grouprepo_2025/" style="text-decoration: none;"> 
+    <button style="background-color: #6699ff !important; border-radius: 10px; color: white;">Coding Languages</button> 
+  </a> 
+</div>
 
+<button class="button" onclick="toggleDarkMode()">Toggle Dark/Light Mode</button>
 
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        document.body.classList.toggle('light-mode');
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDarkMode);
+    }
+
+ 
+    const savedDarkMode = localStorage.getItem('darkMode');
+    if (savedDarkMode === 'true') {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.add('light-mode');
+    }
+</script>

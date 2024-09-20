@@ -60,7 +60,7 @@ permalink: /my_calculator/
       font-size: 1.5rem;
       border: none;
       border-radius: 5px;
-      background-color: #e0e0eb;
+      background-color: #b3bf96 ;
       cursor: pointer;
     }
     button:hover {
@@ -101,7 +101,7 @@ permalink: /my_calculator/
   <script>
     let currentInput = '';
     const piDigits = "3.14159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798214808651328230664709384460955058223172 53594081284811174502841027019385211055596446229489549303819644288109756659334461284756482337867831652712019091456485669234603486104543266482133936072602491412737245870066 0631558817488152092096282925409171536436789259036001133053054882046652138414695194151160943305727036575959195309218611738193261179 310511854807446237996274956735188575272489122793818301194912";
-    let currentPiIndex = 2; // Start after "3."
+    let currentPiIndex = 2; 
 
     function appendSymbol(symbol) {
       currentInput += symbol;
@@ -172,3 +172,43 @@ permalink: /my_calculator/
     }
   </script>
 </body>
+<button class="button" onclick="toggleDarkMode()">Toggle Dark/Light Mode</button>
+
+<style>
+
+    body.dark-mode {
+        background-color: #121212;
+        color: #fff; 
+    }
+
+    .button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #6699ff;
+        color: white;
+    }
+    .button:hover {
+        background-color: #5577cc;
+    }
+</style>
+
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        document.body.classList.toggle('light-mode');
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDarkMode);
+    }
+
+
+    const savedDarkMode = localStorage.getItem('darkMode');
+    if (savedDarkMode === 'true') {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.add('light-mode');
+    }
+</script>

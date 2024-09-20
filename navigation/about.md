@@ -18,6 +18,8 @@ The reason I joined this class was to improve my coding skills and I hope to bec
 </div>
 </center>
 
+<button class="button" onclick="toggleDarkMode()">Toggle Dark/Light Mode</button>
+
 <style>
     .border {
         border: 20px solid #000; 
@@ -27,4 +29,32 @@ The reason I joined this class was to improve my coding skills and I hope to bec
     .border img {
         display: block; 
     }
+
+
+    body.dark-mode {
+        background-color: #121212;
+        color: #fff; 
+    }
+
+    body.dark-mode .border {
+        border: 20px solid #fff; 
+    }
 </style>
+
+<script>
+
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        document.body.classList.toggle('light-mode');
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDarkMode);
+    }
+
+
+    const savedDarkMode = localStorage.getItem('darkMode');
+    if (savedDarkMode === 'true') {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.add('light-mode');
+    }
+</script>
